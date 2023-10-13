@@ -15,23 +15,23 @@
 
 #include "AM2315C.h"
 
-AM2315C DHT(&Wire);
+AM2315C DHT(&Wire1);
 
 
 void setup()
 {
-  
-#if defined(ESP8266) || defined(ESP32)
-  DHT.begin(12, 13);  //  select your pin numbers here
-#else
-  DHT.begin();
-#endif
-
   Serial.begin(115200);
+  Serial.println();
   Serial.println(__FILE__);
   Serial.print("AM2315C LIBRARY VERSION: ");
   Serial.println(AM2315C_LIB_VERSION);
   Serial.println();
+
+  Wire.begin(12, 13);    //  ESP32 default pins 21 22
+  Wire.setClock(400000);
+  
+  DHT.begin();
+
   delay(2000);
 
   Serial.println("Type,\tStatus,\tHumidity (%),\tTemperature (C)");
@@ -80,4 +80,4 @@ void loop()
 }
 
 
-// -- END OF FILE --
+//  -- END OF FILE --
