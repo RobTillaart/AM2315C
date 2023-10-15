@@ -1,8 +1,8 @@
 //
-//    FILE: AM2315C_test_esp.ino
+//    FILE: AM2315C_test_Wire1.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: Demo for AM2315C I2C humidity & temperature sensor
-//          ESP32 / ESP8266
+//
 
 //  Always check datasheet
 //
@@ -15,7 +15,7 @@
 
 #include "AM2315C.h"
 
-AM2315C DHT(&Wire);
+AM2315C DHT(&Wire1);
 
 
 void setup()
@@ -27,8 +27,8 @@ void setup()
   Serial.println(AM2315C_LIB_VERSION);
   Serial.println();
 
-  Wire.begin(12, 13);    //  ESP32 default pins 21 22
-  Wire.setClock(400000);
+  Wire1.begin(12, 13);    //  ESP32 default pins 21 22
+  Wire1.setClock(400000);
   
   DHT.begin();
 
