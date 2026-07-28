@@ -88,7 +88,7 @@ int AM2315C::read()
   {
     if (millis() - start >= 1000)
     {
-      return DHT20_ERROR_READ_TIMEOUT;
+      return AM2315C_ERROR_READ_TIMEOUT;
     }
     yield();
     //  delay(1)
